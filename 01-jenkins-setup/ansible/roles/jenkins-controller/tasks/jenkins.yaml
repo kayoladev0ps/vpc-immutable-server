@@ -55,8 +55,10 @@
   systemd:
     daemon_reload: yes
 
-- name: Start Jnekins Service
+- name: Start Jenkins Service
   systemd:
     name: jenkins
     state: started
+
+
 
