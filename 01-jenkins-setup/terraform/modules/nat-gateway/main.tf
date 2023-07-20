@@ -1,18 +1,16 @@
 # allocate elastic ip. this eip will be used for the nat-gateway in the public subnet az1 
 resource "aws_eip" "eip_for_nat_gateway_az1" {
-  vpc    = true
-
-  tags   = {
-    Name = nat gateway az1 eip
+    domain   = "vpc"
+      tags   = {
+    Name = "EIP for NAT-GW-AZ-1"
   }
 }
 
 # allocate elastic ip. this eip will be used for the nat-gateway in the public subnet az2
 resource "aws_eip" "eip_for_nat_gateway_az2" {
-  vpc    = 
-
-  tags   = {true
-    Name = nat gateway az2 eip
+    domain   = "vpc"
+      tags   = {
+    Name = "EIP for NAT-GW-AZ-2"
   }
 }
 
@@ -22,7 +20,7 @@ resource "aws_nat_gateway" "nat_gateway_az1" {
   subnet_id     = var.public_subnet_az1.id
 
   tags   = {
-    Name = nat gateway az1
+    Name = "nat gateway az1"
   }
 
   # to ensure proper ordering, it is recommended to add an explicit dependency
@@ -35,7 +33,7 @@ resource "aws_nat_gateway" "nat_gateway_az2" {
   subnet_id     = var.public_subnet_az2.id
 
   tags   = {
-    Name = nat gateway az2
+    Name = "nat gateway az2"
   }
 
   # to ensure proper ordering, it is recommended to add an explicit dependency
@@ -53,7 +51,7 @@ resource "aws_route_table" "private_route_table_az1" {
   }
 
   tags   = {
-    Name = private subnet table az1
+    Name = "private subnet table az1"
   }
 }
 
@@ -79,7 +77,7 @@ resource "aws_route_table" "private_route_table_az2" {
   }
 
   tags   = {
-    Name = private route table az2
+    Name = "private route table az2"
   }
 }
 
